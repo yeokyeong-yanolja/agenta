@@ -13,7 +13,7 @@ from agenta_backend.models.api.api_models import (
     Dict,
 )
 
-client = docker.from_env()
+client = None
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)

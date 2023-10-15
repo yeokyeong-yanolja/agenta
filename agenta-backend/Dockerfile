@@ -18,5 +18,5 @@ RUN touch /app/agenta_backend/__init__.py
 RUN poetry config virtualenvs.create false \
     && poetry install --no-interaction --no-ansi
 # remove dummy module
-RUN rm -r /app/agenta_backend
+# RUN rm -r /app/agenta_backend
 EXPOSE 8000

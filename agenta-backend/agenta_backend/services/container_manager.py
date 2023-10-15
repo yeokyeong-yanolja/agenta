@@ -13,7 +13,7 @@ from asyncio.exceptions import CancelledError
 from agenta_backend.models.api.api_models import Image
 
 
-client = docker.from_env()
+client = None
 
 
 logger = logging.getLogger(__name__)
