@@ -14,6 +14,7 @@ from agenta_backend.models.db_models import (
     Feedback as FeedbackDB,
     EvaluationDB,
     EvaluationScenarioDB,
+    VariantBaseDB,
 )
 from agenta_backend.models.api.api_models import (
     AppVariant,
@@ -24,6 +25,7 @@ from agenta_backend.models.api.api_models import (
     App,
     EnvironmentOutput,
     TestSetOutput,
+    BaseOutput,
 )
 from agenta_backend.models.api.observability_models import (
     Span,
@@ -114,7 +116,7 @@ async def app_variant_db_to_output(app_variant_db: AppVariantDB) -> AppVariantOu
         deployment = await db_manager.get_deployment_by_objectid(
             app_variant_db.base.deployment
         )
-        uri = deployment.uri_path
+        uri = deployment.uri
     else:
         deployment = None
         uri = None
@@ -158,6 +160,10 @@ async def environment_db_to_output(
     )
 
 
+def base_db_to_pydantic(base_db: VariantBaseDB) -> BaseOutput:
+    return BaseOutput(base_id=str(base_db.id), base_name=base_db.base_name)
+
+
 def app_db_to_pydantic(app_db: AppDB) -> App:
     return App(app_name=app_db.app_name, app_id=str(app_db.id))
 
@@ -174,18 +180,15 @@ def image_db_to_pydantic(image_db: ImageDB) -> ImageExtended:
 def templates_db_to_pydantic(templates_db: List[TemplateDB]) -> List[Template]:
     return [
         Template(
-            id=template.dockerhub_tag_id,
+            id=str(template.id),
             image=TemplateImageInfo(
                 name=template.name,
                 size=template.size,
                 digest=template.digest,
                 title=template.title,
                 description=template.description,
-                architecture=template.architecture,
-                status=template.status,
                 last_pushed=template.last_pushed,
                 repo_name=template.repo_name,
-                media_type=template.media_type,
             ),
         )
         for template in templates_db
