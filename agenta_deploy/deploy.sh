@@ -1,17 +1,7 @@
 #!/bin/bash
 
-REGION="ap-northeast-2"
-ACCOUNT_ID="517727162249"
-REPO_PREFIX="iab"
-
-# Image names and repository names
-WEB_IMAGE_NAME="agentaai-agenta-web"
-BACKEND_IMAGE_NAME="agentaai-backend"
-# REDIS_IMAGE_NAME="redis"
-
-WEB_REPO_NAME="${REPO_PREFIX}/agenta-web-dev"
-BACKEND_REPO_NAME="${REPO_PREFIX}/agenta-backend-dev"
-# REDIS_REPO_NAME="${REPO_PREFIX}/redis"
+# Include secrets
+source secrets.sh
 
 # ECR Addresses
 WEB_ECR_ADDRESS="${ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/${WEB_REPO_NAME}"
