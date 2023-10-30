@@ -37,7 +37,7 @@ async def start_service(
     logger.debug(f"container_name: {container_name}")
     logger.debug(f"env_vars: {env_vars}")
 
-    results = docker_utils.start_container(
+    results = docker_utils.start_container( # yeokyeong; container 생성 안하고 그냥 라우팅 하면 안되나 
         image_name=app_variant_db.image.tags,
         uri_path=uri_path,
         container_name=container_name,

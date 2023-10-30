@@ -32,7 +32,7 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 
 
-async def start_variant(
+async def start_variant( # yeokyeong; app variant 생성
     db_app_variant: AppVariantDB,
     env_vars: DockerEnvVars = None,
     **kwargs: dict,

@@ -105,7 +105,7 @@ def start_container(
             labels.update(development_labels)
 
         env_vars = {} if env_vars is None else env_vars
-        container = client.containers.run(
+        container = client.containers.run( # yeokyeong; container 생성
             image,
             detach=True,
             labels=labels,
@@ -119,7 +119,7 @@ def start_container(
         if container.status == "exited":
             logs = container.logs().decode("utf-8")
             raise Exception(f"Container exited immediately. Docker Logs: {logs}")
-        return {
+        return { # yeokyeong; uri 그대로 쓰고, container만 안 쓰는 걸로
             "uri": f"{os.environ['DOMAIN_NAME']}/{uri_path}",
             "container_id": container.id,
             "container_name": container_name,
