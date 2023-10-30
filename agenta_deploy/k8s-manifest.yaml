@@ -75,10 +75,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: backendEcrUrl
-          envFrom:
-            - configMapRef:
-                name: ecr-config
+          image: 517727162249.dkr.ecr.ap-northeast-2.amazonaws.com/iab/agenta-backend-dev
           ports:
             - containerPort: 8000
           env:
@@ -127,10 +124,7 @@ spec:
     spec:
       containers:
         - name: agenta-web
-          image: webEcrUrl
-          envFrom:
-            - configMapRef:
-                name: ecr-config
+          image: 517727162249.dkr.ecr.ap-northeast-2.amazonaws.com/iab/agenta-web-dev
           ports:
             - containerPort: 3000
 
@@ -256,7 +250,6 @@ spec:
     spec:
       containers:
         - name: redis
-          # image: 517727162249.dkr.ecr.ap-northeast-2.amazonaws.com/iab/redis:latest
-          image: redis:6.2.5
+          image: redis
           ports:
             - containerPort: 6379
