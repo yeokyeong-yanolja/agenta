@@ -22,7 +22,7 @@ from agenta_backend.models.db_models import (
     AppDB,
 )
 
-client = docker.from_env()
+client = None
 
 
 logger = logging.getLogger(__name__)
