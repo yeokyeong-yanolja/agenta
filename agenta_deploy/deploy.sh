@@ -26,4 +26,5 @@ docker push ${BACKEND_ECR_ADDRESS}
 # docker push ${REDIS_ECR_ADDRESS}
 
 # Step 5: Deploy Kubernetes Manifest
+kubectl apply -f ecr-config.yaml
 kubectl apply -f k8s-manifest.yaml

@@ -57,3 +57,4 @@ agenta-web/cypress/videos/
 .nextjs_cache/
 
 agenta_deploy/secrets.sh
+agenta_deploy/ecr-config.yaml
